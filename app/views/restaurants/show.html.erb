@@ -1,0 +1,22 @@
+<div class="container  pt-4">
+  <div class="card p-4 my-3">
+    <h1><%= @restaurant.name %></h1>
+    <h3><%= @restaurant.category %></h3>
+    <p><%= @restaurant.address %></p>
+    <p><%= @restaurant.phone_number %></p>
+    <p><%= link_to "back", restaurants_path, class: 'btn btn-secondary' %></p>
+    <div class="card p-3">
+      <h3 class="text-center">Reviews <%= link_to "new", new_restaurant_review_path(@restaurant), class: "btn btn-primary" %></h3>
+      <% if @restaurant.reviews == []  %>
+        <p class="text-center">No reviews yet!</p>
+      <% else %>
+        <% @restaurant.reviews.each do |review| %>
+          <div class="card p-3 my-2">
+            <h4><%= review.rating %>/5</h4>
+            <%= review.content %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

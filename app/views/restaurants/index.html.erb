@@ -1,7 +1,11 @@
-<h1>Restaurants</h1>
-<% @restaurants.each do |restaurant| %>
-  <%= restaurant.name %>
-  <%= restaurant.address %>
-  <%= restaurant.phone_number %>
-  <%= restaurant.category %>
-<% end %>
+<div class="container pt-4">
+<h1>Restaurants <%= link_to "new", new_restaurant_path, class: "btn btn-primary" %></h1>
+  <% @restaurants.each do |restaurant| %>
+    <div class="card p-4 my-3">
+      <h3><%= link_to restaurant.name, restaurant_path(restaurant[:id]) %></h3>
+      <p><strong><%= restaurant.category.capitalize %></strong></p>
+      <p><%= restaurant.address %></p>
+      <p><%= restaurant.phone_number %></p>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,11 @@
+<div class="container pt-4">
+  <div class="card p-4 my-3">
+    <h2>New review for <%= @restaurant.name %></h2>
+    <%= simple_form_for [@restaurant, @review] do |f| %>
+      <%= f.input :content %>
+      <%= f.input :rating, collection: Review::RATINGS %>
+      <%= link_to "cancel", restaurant_path(@restaurant), class: "btn btn-secondary" %>
+      <%= f.submit "add a review", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
